@@ -3,6 +3,7 @@ import ceilometerclient.client
 import datetime
 import json
 from conf import CONF
+import sys
 
 """ 
 This file works as a tool to get data from ceilometer and save it to a multi-objects JSON file.

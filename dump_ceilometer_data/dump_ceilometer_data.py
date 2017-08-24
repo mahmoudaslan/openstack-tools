@@ -43,6 +43,13 @@ if __name__ == "__main__":
         print e
         sys.exit(1)
 
+    if len(sys.argv) == 3:
+        start_ts = sys.argv[1]
+        end_ts = sys.argv[2]
+    else:
+        print "Incorrect args. Usage: dump_ceilometer_data.py start_timestamp end_timestamp."
+        print "Timestamps are given in the format of: `%Y-%m-%dT%H:%M:%S.%f`"
+        exit (1)
     #Connect to ceilometer, connection_pool = True for keeping the connection alive as long as the process go
     cclient = ceilometerclient.client.get_client(conf.c_version,
                                                  os_username=conf.username,
@@ -50,4 +57,4 @@ if __name__ == "__main__":
                                                  os_tenant_name=conf.project_name,
                                                  os_auth_url=conf.auth_url,
                                                  connection_pool=True)
-    dump_json(cclient, conf.start_timestamp, conf.end_timestamp, conf.request_limit)
+    dump_json(cclient, start_ts, end_ts, conf.request_limit)

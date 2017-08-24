@@ -31,9 +31,6 @@ class CONF(object):
             self.project_name = configParser.get('Ceilometer', 'project_name')
 
             self.request_limit = configParser.getint('Default', 'request_limit')
-            self.start_timestamp = configParser.get('Default', 'start_timestamp')
-            self.end_timestamp = configParser.get('Default', 'end_timestamp')
-
             
         except (ConfigParser.NoSectionError, ConfigParser.NoOptionError) as e:
             raise ValueError("Configuration parsing error: " + str(e))
